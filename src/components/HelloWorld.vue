@@ -2,7 +2,9 @@
   <h1>{{ name }}</h1>
 
   <div>
-    <button class="font-bold" type="button">count is {{ name }}</button>
+    <button class="font-bold" type="button">
+      count is {{ name }}
+    </button>
     <p>
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
@@ -31,21 +33,20 @@
   </p>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
-export default defineComponent({
-  props: {
+<script setup lang="ts">
+import { ref } from "vue";
+
+const name = ref("FROFY");
+
+defineProps(
+  {
     mainMessage: {
       type: String,
-      required: true
-    }
-  },
-  data() {
-    return {
-      name: "HelloWorld"
+      default: "FROFY"
     }
   }
-})
+)
+
 </script>
 
 <style scoped>
