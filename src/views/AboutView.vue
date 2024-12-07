@@ -1,20 +1,27 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
-import AboutPage from "../components/AboutPage.vue";
+<script setup lang="ts">
+import {provide, ref} from 'vue';
+import MyButton from "../components/MyButton.vue";
+// import AboutPage from "../components/AboutPage.vue";
 
-export default defineComponent({
-  name: "AboutView",
-  components: {AboutPage},
-  data() {
-    return {
-      currentRoute: ""
-    }
-  }
-})
+const count = ref(123);
+
+const changeCount = () => {
+  count.value++;
+}
+
+provide("count", {
+  count,
+  changeCount,
+});
+
 </script>
 
 <template>
-  <about-page />
+  <div @click="count += 2">
+    Provide: {{ count }}
+  </div>
+  <!--  <about-page my-name="FROFY" v-model:counter.capitalize="count" />-->
+  <my-button />
 </template>
 
 
